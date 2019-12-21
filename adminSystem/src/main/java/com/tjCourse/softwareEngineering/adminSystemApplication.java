@@ -10,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan("com.tjCourse.softwareEngineering.dao")
+@MapperScan("com.tjCourse.softwareEngineering.backend.dao")
 @EnableCaching
 @EnableSwagger2
 @EnableTransactionManagement

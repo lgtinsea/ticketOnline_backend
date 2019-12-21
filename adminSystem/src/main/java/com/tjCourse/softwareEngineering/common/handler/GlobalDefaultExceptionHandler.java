@@ -1,0 +1,39 @@
+package com.tjCourse.softwareEngineering.common.handler;
+
+import com.tjCourse.softwareEngineering.common.exception.ServiceException;
+import com.tjCourse.softwareEngineering.common.exception.UnauthorizedException;
+import org.apache.shiro.ShiroException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ControllerAdvice
+public class GlobalDefaultExceptionHandler {
+
+    @ExceptionHandler(ServiceException.class)
+    @ResponseBody
+    public ResponseEntity<String> serviceExceptionHandler(ServiceException e) {
+        String body = String.format("Msg: %s", e.getMsg());
+        return new ResponseEntity<>(body, e.getStatus());
+    }
+
+    // 捕捉shiro的异常
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(ShiroException.class)
+    public ResponseEntity<String> handle401(ShiroException e) {
+        String body = String.format("Msg: %s", e.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+
+    // 捕捉UnauthorizedException
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<String> handle401(UnauthorizedException e) {
+        String body = String.format("Msg: %s", e.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+
+}

@@ -8,7 +8,7 @@
   <artifactId>ticketOnline</artifactId>
   <version>1.0-SNAPSHOT</version>
   <modules>
-    <module>eureka-server</module>
+    <module>eurekaServer</module>
     <module>userSystem</module>
     <module>adminSystem</module>
     <module>gatewayClient</module>
@@ -84,6 +84,13 @@
       <artifactId>springfox-swagger-ui</artifactId>
       <version>2.7.0</version>
     </dependency>
+    <!-- shiro -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+
 
   </dependencies>
 
