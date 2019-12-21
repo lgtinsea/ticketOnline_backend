@@ -1,6 +1,6 @@
-/*
 package com.tjCourse.softwareEngineering.backend.shiro.jwt;
 
+import com.tjCourse.softwareEngineering.backend.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
@@ -24,22 +24,19 @@ public class JwtRealm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private AdminService adminService;
+  /*  @Autowired
+    private AdminService adminService;*/
 
     @Override
     public boolean supports(AuthenticationToken token) {
         return token instanceof JwtToken;
     }
+// 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
 
-    */
-/**
-     * 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
-     *//*
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String role = JWTUtil.getRole(principals.toString());
+       /* String role = JWTUtil.getRole(principals.toString());
         Set<String> roles = new HashSet<>();
         Set<String> permissions = new HashSet<>();
         if (role.equals("admin")) {
@@ -57,21 +54,22 @@ public class JwtRealm extends AuthorizingRealm {
                 roles.add("admin1");
                 permissions.add("admin1");
             }
-        }
+        }*/
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+/*
         simpleAuthorizationInfo.setRoles(roles);
         simpleAuthorizationInfo.setStringPermissions(permissions);
+*/
         return simpleAuthorizationInfo;
     }
 
-    */
-/**
-     * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
-     *//*
+// 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
+
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
         String token = (String) auth.getCredentials();
+/*
 
         // 解密获得username & role，用于和数据库进行对比
         String username = JWTUtil.getUsername(token);
@@ -98,8 +96,9 @@ public class JwtRealm extends AuthorizingRealm {
         if (! JWTUtil.verify(token, username, password)) {
             throw new AuthenticationException("Username or password error");
         }
+*/
 
         return new SimpleAuthenticationInfo(token, token, "jwt_realm");
     }
 
-}*/
+}
