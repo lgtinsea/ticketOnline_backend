@@ -21,4 +21,9 @@ public class ActivityController extends CURDController<Activity,Integer, Activit
             return new ResponseEntity<>(null,HttpStatus.OK);
         }
     }
+
+    @GetMapping(value = "/user/{id}")
+    public ResponseEntity<List<Activity>> getUserActivities(@PathVariable("id")Integer id){
+        return new ResponseEntity<>(null,HttpStatus.OK);
+    }
 }
