@@ -1,6 +1,6 @@
 package com.tjCourse.softwareEngineering.backend.shiro.filter;
 
-import ICAT.backend.shiro.jwt.JwtToken;
+import com.tjCourse.softwareEngineering.backend.shiro.jwt.JwtToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;

@@ -1,3 +1,4 @@
+/*
 package com.tjCourse.softwareEngineering.backend.config;
 
 
@@ -29,10 +30,12 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
-    /**
+    */
+/**
      * 自定义Realm
      * @return
-     */
+     *//*
+
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
     public JwtRealm jwtRealm() {
@@ -76,9 +79,11 @@ public class ShiroConfig {
         return shiroFilter;
     }
 
-    /**
+    */
+/**
      * 替换默认工厂
-     */
+     *//*
+
     class StatelessDefaultSubjectFactory extends DefaultWebSubjectFactory {
         @Override
         public Subject createSubject(SubjectContext context) {
@@ -88,20 +93,24 @@ public class ShiroConfig {
         }
     }
 
-    /**
+    */
+/**
      * Subject工厂管理器
      * @return
-     */
+     *//*
+
     @Bean
     public DefaultWebSubjectFactory subjectFactory(){
         DefaultWebSubjectFactory subjectFactory = new StatelessDefaultSubjectFactory();
         return subjectFactory;
     }
 
-    /**
+    */
+/**
      * 安全管理器
      * @return
-     */
+     *//*
+
     @Bean("securityManager")
     public DefaultWebSecurityManager securityManager(){
         DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
@@ -120,10 +129,12 @@ public class ShiroConfig {
         return securityManager;
     }
 
-    /**
+    */
+/**
      * 会话管理器
      * @return
-     */
+     *//*
+
     public DefaultSessionManager sessionManager(){
         DefaultSessionManager sessionManager =new DefaultSessionManager();
         // 关闭session定时检查，通过setSessionValidationSchedulerEnabled禁用掉会话调度器
@@ -131,19 +142,23 @@ public class ShiroConfig {
         return  sessionManager;
     }
 
-    /**
+    */
+/**
      * Shiro生命周期处理器
      * @return
-     */
+     *//*
+
     @Bean(name = "lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
 
-    /**
+    */
+/**
      * 开启Shiro注解(如@RequiresRoles,@RequiresPermissions)
      * @return
-     */
+     *//*
+
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
     public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
@@ -159,3 +174,4 @@ public class ShiroConfig {
         return authorizationAttributeSourceAdvisor;
     }
 }
+*/
