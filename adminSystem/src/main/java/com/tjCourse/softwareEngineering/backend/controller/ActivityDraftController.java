@@ -1,6 +1,6 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
-import com.tjCourse.softwareEngineering.backend.DTO.ReturnDraftDTO;
+import com.tjCourse.softwareEngineering.backend.dto.ReturnDraftDTO;
 import com.tjCourse.softwareEngineering.backend.pojo.ActivityDraft;
 import com.tjCourse.softwareEngineering.backend.service.ActivityDraftService;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;

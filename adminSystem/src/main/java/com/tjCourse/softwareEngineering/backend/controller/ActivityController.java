@@ -1,8 +1,8 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
-import com.tjCourse.softwareEngineering.backend.DTO.ReturnActivitiesCoverDTO;
-import com.tjCourse.softwareEngineering.backend.DTO.ReturnActivitiesDTO;
-import com.tjCourse.softwareEngineering.backend.DTO.ReturnActivityReportDTO;
+import com.tjCourse.softwareEngineering.backend.dto.ReturnActivitiesCoverDTO;
+import com.tjCourse.softwareEngineering.backend.dto.ReturnActivitiesDTO;
+import com.tjCourse.softwareEngineering.backend.dto.ReturnActivityReportDTO;
 import com.tjCourse.softwareEngineering.backend.pojo.Activity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

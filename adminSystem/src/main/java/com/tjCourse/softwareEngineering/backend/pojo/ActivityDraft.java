@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -19,7 +20,8 @@ public class ActivityDraft {
   @Column(name = "ID")
   private int id;
   private int normalAdminId;
-  private java.sql.Timestamp time;
+  private java.sql.Timestamp time_start;
+  private Timestamp time_end;
   private String name;
   private String introduction;
   private String address;

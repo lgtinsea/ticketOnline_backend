@@ -18,6 +18,7 @@
       <module name="adminSystem" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
       <module name="gatewayClient" options="-parameters" />
+      <module name="ticketOnline_backend" options="-parameters" />
       <module name="userSystem" options="-parameters" />
     </option>
   </component>

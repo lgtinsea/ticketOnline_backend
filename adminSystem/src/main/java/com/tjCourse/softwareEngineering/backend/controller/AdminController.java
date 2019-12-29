@@ -1,6 +1,6 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
-import com.tjCourse.softwareEngineering.backend.DTO.ReturnAdminInfoDTO;
+import com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO;
 import com.tjCourse.softwareEngineering.backend.pojo.NormalAdmin;
 import com.tjCourse.softwareEngineering.backend.service.NormalAdminService;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;

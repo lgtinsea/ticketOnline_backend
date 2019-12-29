@@ -1,6 +1,5 @@
 package com.tjCourse.softwareEngineering.backend.service.Implementation;
 
-import com.sun.deploy.ref.AppRef;
 import com.tjCourse.softwareEngineering.backend.dao.repository.AppointmentRepository;
 import com.tjCourse.softwareEngineering.backend.pojo.Appointment;
 import com.tjCourse.softwareEngineering.backend.pojo.AppointmentPK;
