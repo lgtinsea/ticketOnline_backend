@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,5 +31,4 @@ public class NormalAdmin {
   private String reason;
   private String opinion;
   private int status;
-  
 }

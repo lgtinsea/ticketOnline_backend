@@ -1,7 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
 import com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.Activity;
+import com.tjCourse.softwareEngineering.backend.entity.Activity;
 import com.tjCourse.softwareEngineering.backend.service.ActivityService;
 import com.tjCourse.softwareEngineering.backend.service.implementation.ActivityServiceImpl;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;

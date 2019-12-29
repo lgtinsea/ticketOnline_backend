@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
 import com.tjCourse.softwareEngineering.backend.dto.ReturnCommentDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.Comment;
+import com.tjCourse.softwareEngineering.backend.entity.Comment;
 import com.tjCourse.softwareEngineering.backend.service.CommentService;
 import com.tjCourse.softwareEngineering.backend.service.implementation.CommentServiceImpl;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;

@@ -3,7 +3,7 @@ package com.tjCourse.softwareEngineering.backend.service.implementation;
 import com.tjCourse.softwareEngineering.backend.dao.mapper.CommentMapper;
 import com.tjCourse.softwareEngineering.backend.dao.repository.CommentRepository;
 import com.tjCourse.softwareEngineering.backend.dto.ReturnCommentDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.Comment;
+import com.tjCourse.softwareEngineering.backend.entity.Comment;
 import com.tjCourse.softwareEngineering.backend.service.CommentService;
 import com.tjCourse.softwareEngineering.common.service.implementation.CURDServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

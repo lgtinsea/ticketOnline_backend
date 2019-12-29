@@ -1,7 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
 import com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.SeniorAdmin;
+import com.tjCourse.softwareEngineering.backend.entity.SeniorAdmin;
 import com.tjCourse.softwareEngineering.backend.service.SeniorAdminService;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;
 import org.springframework.http.HttpStatus;

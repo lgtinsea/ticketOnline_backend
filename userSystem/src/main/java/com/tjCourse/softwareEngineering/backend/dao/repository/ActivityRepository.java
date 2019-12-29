@@ -1,12 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.dao.repository;
 
-import com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.Activity;
+import com.tjCourse.softwareEngineering.backend.entity.Activity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 public interface ActivityRepository extends JpaRepository<Activity,Integer> {
 /*

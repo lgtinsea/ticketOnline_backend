@@ -1,7 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.service.implementation;
 
 import com.tjCourse.softwareEngineering.backend.dao.repository.AppointmentRepository;
-import com.tjCourse.softwareEngineering.backend.pojo.Appointment;
+import com.tjCourse.softwareEngineering.backend.entity.Appointment;
 import com.tjCourse.softwareEngineering.backend.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

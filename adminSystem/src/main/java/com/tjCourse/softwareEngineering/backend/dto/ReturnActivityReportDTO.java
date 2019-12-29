@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ReturnActivityReportDTO {
     private Integer activityID;
+    private Integer real_num;
     private Integer sum;
     private String name;
 }

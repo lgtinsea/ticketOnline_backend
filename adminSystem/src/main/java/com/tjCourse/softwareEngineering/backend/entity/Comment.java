@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class Comment {
   private int adminId;
   private String content;
   private java.sql.Timestamp time;
-  private int ifAppeared;
+  private Boolean ifAppeared;
   private int replyId;
-
+  
 }

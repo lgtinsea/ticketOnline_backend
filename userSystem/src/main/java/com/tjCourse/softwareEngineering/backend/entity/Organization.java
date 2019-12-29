@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,17 +13,14 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "comment")
-public class Comment {
+@Table(name = "organization")
+public class Organization {
   @Id
   @Column(name = "ID")
   private int id;
-  private int userId;
-  private int activityId;
-  private int adminId;
-  private String content;
-  private java.sql.Timestamp time;
-  private int ifAppeared;
-  private int replyId;
-  
+  private String name;
+  private int type;
+  private int seniorOrganization;
+  private int adminNumber;
+
 }

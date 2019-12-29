@@ -1,7 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
 import com.tjCourse.softwareEngineering.backend.dto.ReturnBasicInfoDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.User;
+import com.tjCourse.softwareEngineering.backend.entity.User;
 import com.tjCourse.softwareEngineering.backend.service.UserService;
 import com.tjCourse.softwareEngineering.backend.service.implementation.UserServiceImpl;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;

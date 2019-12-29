@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,12 +13,11 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "normalAdmin")
-public class NormalAdmin {
+@Table(name = "seniorAdmin")
+public class SeniorAdmin {
   @Id
   @Column(name = "ID")
   private int id;
-  private int checkerId;
   private String name;
   private String password;
   private String emailAddress;
@@ -27,8 +26,5 @@ public class NormalAdmin {
   private String gender;
   private String organization;
   private int age;
-  private int organizationId;
-  private String reason;
-  private String opinion;
-  private int status;
+
 }

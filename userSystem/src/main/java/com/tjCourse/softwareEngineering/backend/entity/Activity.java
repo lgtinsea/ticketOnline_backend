@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +20,7 @@ public class Activity {
   @Column(name = "ID")
   private int id;
   private int seniorAdminId;
-  private java.sql.Timestamp time_start;
+  private Timestamp time_start;
   private Timestamp time_end;
   private String name;
   private String introduction;

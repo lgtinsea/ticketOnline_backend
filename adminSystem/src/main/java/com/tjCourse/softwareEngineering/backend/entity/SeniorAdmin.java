@@ -1,4 +1,4 @@
-package com.tjCourse.softwareEngineering.backend.pojo;
+package com.tjCourse.softwareEngineering.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Data
-@Entity
+@Data@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
-public class User {
+@Table(name = "seniorAdmin")
+public class SeniorAdmin {
   @Id
   @Column(name = "ID")
   private int id;
@@ -26,5 +25,5 @@ public class User {
   private String gender;
   private String organization;
   private int age;
-
+  
 }

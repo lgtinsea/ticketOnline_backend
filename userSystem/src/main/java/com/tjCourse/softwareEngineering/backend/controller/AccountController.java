@@ -1,7 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
 import com.tjCourse.softwareEngineering.backend.dto.ReturnLogInDTO;
-import com.tjCourse.softwareEngineering.backend.pojo.User;
+import com.tjCourse.softwareEngineering.backend.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

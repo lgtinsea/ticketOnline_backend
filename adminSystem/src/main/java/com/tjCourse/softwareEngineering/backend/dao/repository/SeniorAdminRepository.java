@@ -1,9 +1,11 @@
 package com.tjCourse.softwareEngineering.backend.dao.repository;
 
-import com.tjCourse.softwareEngineering.backend.pojo.SeniorAdmin;
+import com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO;
+import com.tjCourse.softwareEngineering.backend.entity.SeniorAdmin;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
+import org.springframework.data.jpa.repository.Query;
 
 public interface SeniorAdminRepository extends JpaRepository<SeniorAdmin,Integer> {
+    @Query(value = "select new com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO(portrait,name) from seniorAdmin where ID = :ID")
+    public ReturnAdminInfoDTO getSeniorAdminInfo(Integer ID);
 }
