@@ -39,9 +39,9 @@ public class NormalAdminServiceImpl extends CURDServiceImpl<NormalAdmin,Integer,
     }
 
     @Override
-    public Boolean checkAdmin(Integer ID, Integer status) {
+    public Boolean checkAdmin(Integer seniorAdminID,Integer normalAdminID, Integer status) {
         try {
-            NormalAdmin normalAdmin = normalAdminRepository.getOne(ID);
+            NormalAdmin normalAdmin = normalAdminRepository.getOne(normalAdminID);
             if (normalAdmin == null || normalAdmin.getStatus() != 1){
                 return false;
             }
@@ -51,6 +51,7 @@ public class NormalAdminServiceImpl extends CURDServiceImpl<NormalAdmin,Integer,
             }
 
             normalAdmin.setStatus(status);
+            normalAdmin.setCheckerId(seniorAdminID);
 
             normalAdminRepository.saveAndFlush(normalAdmin);
             return true;

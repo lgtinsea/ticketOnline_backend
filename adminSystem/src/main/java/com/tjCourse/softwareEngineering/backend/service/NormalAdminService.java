@@ -11,7 +11,7 @@ public interface NormalAdminService extends CURDService<NormalAdmin,Integer> {
 
     public List<NormalAdmin> getUncheckedAdmin();
 
-    public Boolean checkAdmin(Integer ID,Integer status);
+    public Boolean checkAdmin(Integer seniorAdminID, Integer normalAdminID ,Integer status);
 
     public ReturnAdminInfoDTO getAdminOwnInfo(Integer ID);
 }

@@ -1,7 +1,9 @@
 package com.tjCourse.softwareEngineering.backend.dao.repository;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO;
 import com.tjCourse.softwareEngineering.backend.entity.NormalAdmin;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -14,6 +16,6 @@ public interface NormalAdminRepository extends JpaRepository<NormalAdmin,Integer
 
     public NormalAdmin getById(Integer ID);
 
-    @Query(value = "select new com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO(portrait,name) from normalAdmin where ID = :ID")
-    public ReturnAdminInfoDTO getAdminInfo(Integer ID);
+    @Query(value = "select new com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO(portrait,name) from NormalAdmin where ID = :ID")
+    public ReturnAdminInfoDTO getAdminInfo(@Param("ID")Integer ID);
 }

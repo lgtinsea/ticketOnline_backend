@@ -27,7 +27,7 @@ public class AccountController {
     }
 
     @PutMapping(value = "/admin/applications")
-    public ResponseEntity<Boolean> updateAdminApplication(@RequestParam("ID")Integer ID, @RequestParam("status")Integer status){
-        return new ResponseEntity<>(normalAdminService.checkAdmin(ID,status),HttpStatus.OK);
+    public ResponseEntity<Boolean> updateAdminApplication(@RequestParam("seniorAdminID")Integer seniorAdminID, @RequestParam Integer normalAdminID ,@RequestParam("status")Integer status){
+        return new ResponseEntity<>(normalAdminService.checkAdmin(seniorAdminID, normalAdminID,status),HttpStatus.OK);
     }
 }
