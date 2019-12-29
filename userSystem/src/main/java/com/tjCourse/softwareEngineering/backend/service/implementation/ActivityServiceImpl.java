@@ -28,4 +28,10 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_5(String variety){
         return activityMapper.getActivitiesBasicInfo_5(variety);
     }
+
+    @Override
+    public List<ReturnBasicActivityInfoDTO> getMyActivitiesBasicInfo(Integer userID){
+        return activityMapper.getMyActivitiesBasicInfo(userID);
+    }
+
 }

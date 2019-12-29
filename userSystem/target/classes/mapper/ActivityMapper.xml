@@ -25,4 +25,10 @@
         from activity
         where type = #{variety}
     </select>
+
+    <select id="getMyActivitiesBasicInfo" parameterType="Integer" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
+        select ID,poster,name,time_start,time_end,address
+        from activity join appointment a on activity.ID = a.activityID
+        where userID = #{userID}
+    </select>
 </mapper>

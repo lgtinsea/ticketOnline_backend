@@ -11,4 +11,6 @@ public interface ActivityMapper {
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo(String variety);
 
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_5(String variety);
+
+    public List<ReturnBasicActivityInfoDTO> getMyActivitiesBasicInfo(Integer userID);
 }

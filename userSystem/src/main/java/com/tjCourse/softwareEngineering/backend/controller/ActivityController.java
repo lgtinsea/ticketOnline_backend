@@ -28,8 +28,8 @@ public class ActivityController extends CURDController<Activity,Integer, Activit
     }
 
     @GetMapping(value = "/user/{id}")
-    public ResponseEntity<List<Activity>> getUserActivities(@PathVariable("id")Integer id){
-        return new ResponseEntity<>(null,HttpStatus.OK);
+    public ResponseEntity<List<ReturnBasicActivityInfoDTO>> getUserActivities(@PathVariable("id")Integer id){
+        return new ResponseEntity<>(activityService.getMyActivitiesBasicInfo(id),HttpStatus.OK);
     }
 
 
