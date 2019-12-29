@@ -33,7 +33,7 @@ public class ActivityDraft {
   private int status;
   private int activityId;
   private java.sql.Timestamp applyTime;
-  private int type;
+  private String type;
   private int organizationId;
 
 }

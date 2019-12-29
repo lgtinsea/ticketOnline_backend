@@ -30,7 +30,7 @@ public class Activity {
   @Column(name = "content",columnDefinition = "text")
   private String content;
   private int peopleAmount;
-  private int type;
+  private String type;
   private java.sql.Timestamp releaseTime;
   private int organizationId;
 

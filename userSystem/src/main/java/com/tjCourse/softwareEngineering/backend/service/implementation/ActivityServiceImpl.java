@@ -1,6 +1,7 @@
 package com.tjCourse.softwareEngineering.backend.service.implementation;
 
 import com.netflix.discovery.converters.Auto;
+import com.tjCourse.softwareEngineering.backend.dao.mapper.ActivityMapper;
 import com.tjCourse.softwareEngineering.backend.dao.repository.ActivityRepository;
 import com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO;
 import com.tjCourse.softwareEngineering.backend.dto.ReturnBasicInfoDTO;
@@ -14,15 +15,17 @@ import java.util.List;
 
 @Service
 public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, ActivityRepository> implements ActivityService{
-    @Autowired ActivityRepository activityRepository;
+//    @Autowired ActivityRepository activityRepository;
+    @Autowired
+    ActivityMapper activityMapper;
 
     @Override
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo(String variety) {
-        return activityRepository.getActivitiesBasicInfo(variety);
+        return activityMapper.getActivitiesBasicInfo(variety);
     }
 
     @Override
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_5(String variety){
-        return activityRepository.getActivitiesBasicInfo_5(variety);
+        return activityMapper.getActivitiesBasicInfo_5(variety);
     }
 }

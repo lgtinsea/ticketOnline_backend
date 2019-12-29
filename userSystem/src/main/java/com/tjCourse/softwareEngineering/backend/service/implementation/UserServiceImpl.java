@@ -13,6 +13,6 @@ public class UserServiceImpl extends CURDServiceImpl<User,Integer, UserRepositor
     @Autowired UserRepository repository;
 
     public ReturnBasicInfoDTO getBasicInfoById(Integer ID){
-        return repository.getBasicInfoById(ID);
+        return  repository.getBasicInfoById(ID);
     }
 }
