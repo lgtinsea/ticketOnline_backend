@@ -9,4 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface UserRepository extends JpaRepository<User,Integer> {
     @Query(value = "select new com.tjCourse.softwareEngineering.backend.dto.ReturnBasicInfoDTO(name,portrait) from User where id = ?1")
     public ReturnBasicInfoDTO getBasicInfoById(@Param("Id")Integer Id);
+
+    User getByEmailAddress(String email);
+
+    User getByEmailAddressAndPassword(String emailAddress,String password);
 }

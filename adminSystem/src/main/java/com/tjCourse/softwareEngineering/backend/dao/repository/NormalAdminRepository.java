@@ -10,12 +10,14 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface NormalAdminRepository extends JpaRepository<NormalAdmin,Integer> {
-    public NormalAdmin getByEmailAddress(String emailAddress);
+    NormalAdmin getByEmailAddress(String emailAddress);
 
-    public List<NormalAdmin> getByStatus(Integer status);
+    List<NormalAdmin> getByStatus(Integer status);
 
-    public NormalAdmin getById(Integer ID);
+    NormalAdmin getById(Integer ID);
+
+    NormalAdmin getByEmailAddressAndPassword(String emailAddress,String password);
 
     @Query(value = "select new com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO(portrait,name) from NormalAdmin where ID = :ID")
-    public ReturnAdminInfoDTO getAdminInfo(@Param("ID")Integer ID);
+    ReturnAdminInfoDTO getAdminInfo(@Param("ID") Integer ID);
 }

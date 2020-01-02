@@ -1,7 +1,11 @@
-/*
 package com.tjCourse.softwareEngineering.backend.shiro.jwt;
 
-
+import com.tjCourse.softwareEngineering.backend.entity.NormalAdmin;
+import com.tjCourse.softwareEngineering.backend.entity.SeniorAdmin;
+import com.tjCourse.softwareEngineering.backend.service.NormalAdminService;
+import com.tjCourse.softwareEngineering.backend.service.SeniorAdminService;
+import com.tjCourse.softwareEngineering.backend.shiro.jwt.JwtToken;
+import com.tjCourse.softwareEngineering.backend.utils.JWTUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
@@ -15,65 +19,70 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.management.relation.RelationServiceMBean;
 import java.util.HashSet;
 import java.util.Set;
 
 public class JwtRealm extends AuthorizingRealm {
 
     private static final Logger LOGGER = LogManager.getLogger(JwtRealm.class);
-    private RelationServiceMBean JWTUtil;
 
-*/
-/*    @Autowired
+/*
+    @Autowired
     private UserService userService;
+*/
 
     @Autowired
-    private AdminService adminService;*//*
+    private NormalAdminService normalAdminService;
 
+    @Autowired
+    SeniorAdminService seniorAdminService;
 
     @Override
     public boolean supports(AuthenticationToken token) {
         return token instanceof JwtToken;
     }
 
-    */
-/**
+    /**
      * 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
-     *//*
-
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String role = JWTUtil.getRole(principals.toString());
         Set<String> roles = new HashSet<>();
         Set<String> permissions = new HashSet<>();
-        if (role.equals("admin")) {
+        if (role.equals("normalAdmin")) {
             String account = JWTUtil.getUsername(principals.toString());
-            Admin admin = adminService.getAdminById(account).orElse(null);
+            NormalAdmin admin = normalAdminService.getNormalAdminByEmail(account);
             if (admin == null) {
                 throw new UnauthorizedException("Token error!");
             }
             roles.add("admin");
             permissions.add("admin");
-            if (admin.getRole().intValue() == 0) {
-                roles.add("admin0");
-                permissions.add("admin0");
-            } else {
-                roles.add("admin1");
-                permissions.add("admin1");
+            roles.add("admin1");
+            permissions.add("admin1");
+        }else if (role.equals("seniorAdmin")){
+            String account = JWTUtil.getUsername(principals.toString());
+            SeniorAdmin admin = seniorAdminService.getSeniorAdminByEmail(account);
+            if (admin == null) {
+                throw new UnauthorizedException("Token error!");
             }
+            roles.add("admin");
+            permissions.add("admin");
+            roles.add("admin0");
+            permissions.add("admin0");
+        }else {
+            throw new UnauthorizedException("Token error!");
         }
+
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         simpleAuthorizationInfo.setRoles(roles);
         simpleAuthorizationInfo.setStringPermissions(permissions);
         return simpleAuthorizationInfo;
     }
 
-    */
-/**
+    /**
      * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
-     *//*
-
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
         String token = (String) auth.getCredentials();
@@ -86,16 +95,25 @@ public class JwtRealm extends AuthorizingRealm {
         }
 
         String password = null;
-        if (role.equals("user")) {
+
+        /*if (role.equals("user")) {
             User user = userService.getUserById(username).orElse(null);
             if (user == null) {
                 throw new AuthenticationException("User didn't existed!");
             }
             password = user.getPassword();
-        } else if (role.equals("admin")) {
-            Admin admin = adminService.getAdminById(username).orElse(null);
+        } else */
+
+        if (role.equals("normalAdmin")) {
+            NormalAdmin admin = normalAdminService.getNormalAdminByEmail(username);
             if (admin == null) {
-                throw new AuthenticationException("User didn't existed!");
+                throw new AuthenticationException("Admin didn't existed!");
+            }
+            password = admin.getPassword();
+        }else if (role.equals("seniorAdmin")){
+            SeniorAdmin admin = seniorAdminService.getSeniorAdminByEmail(username);
+            if (admin == null) {
+                throw new AuthenticationException("Admin didn't existed!");
             }
             password = admin.getPassword();
         }
@@ -107,4 +125,4 @@ public class JwtRealm extends AuthorizingRealm {
         return new SimpleAuthenticationInfo(token, token, "jwt_realm");
     }
 
-}*/
+}

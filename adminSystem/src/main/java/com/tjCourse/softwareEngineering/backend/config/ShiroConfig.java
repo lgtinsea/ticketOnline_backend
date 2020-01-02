@@ -1,10 +1,11 @@
-/*
 package com.tjCourse.softwareEngineering.backend.config;
 
 
 import com.tjCourse.softwareEngineering.backend.shiro.filter.JwtFilter;
 import com.tjCourse.softwareEngineering.backend.shiro.jwt.JwtRealm;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
@@ -30,11 +31,12 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
-    */
-/**
+/*
+*
      * 自定义Realm
      * @return
-     *//*
+*/
+
 
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
@@ -79,10 +81,11 @@ public class ShiroConfig {
         return shiroFilter;
     }
 
-    */
-/**
+/*
+*
      * 替换默认工厂
-     *//*
+*/
+
 
     class StatelessDefaultSubjectFactory extends DefaultWebSubjectFactory {
         @Override
@@ -93,11 +96,12 @@ public class ShiroConfig {
         }
     }
 
-    */
-/**
+/*
+*
      * Subject工厂管理器
      * @return
-     *//*
+*/
+
 
     @Bean
     public DefaultWebSubjectFactory subjectFactory(){
@@ -105,11 +109,12 @@ public class ShiroConfig {
         return subjectFactory;
     }
 
-    */
-/**
+/*
+*
      * 安全管理器
      * @return
-     *//*
+*/
+
 
     @Bean("securityManager")
     public DefaultWebSecurityManager securityManager(){
@@ -129,11 +134,12 @@ public class ShiroConfig {
         return securityManager;
     }
 
-    */
-/**
+/*
+*
      * 会话管理器
      * @return
-     *//*
+*/
+
 
     public DefaultSessionManager sessionManager(){
         DefaultSessionManager sessionManager =new DefaultSessionManager();
@@ -142,22 +148,24 @@ public class ShiroConfig {
         return  sessionManager;
     }
 
-    */
-/**
+/*
+*
      * Shiro生命周期处理器
      * @return
-     *//*
+*/
+
 
     @Bean(name = "lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
 
-    */
-/**
-     * 开启Shiro注解(如@RequiresRoles,@RequiresPermissions)
+/*
+*
+     * 开启Shiro注解(如@RequiresRoles, @RequiresPermissions)
      * @return
-     *//*
+*/
+
 
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
@@ -174,4 +182,3 @@ public class ShiroConfig {
         return authorizationAttributeSourceAdvisor;
     }
 }
-*/

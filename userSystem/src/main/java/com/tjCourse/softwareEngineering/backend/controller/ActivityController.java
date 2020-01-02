@@ -5,6 +5,7 @@ import com.tjCourse.softwareEngineering.backend.entity.Activity;
 import com.tjCourse.softwareEngineering.backend.service.ActivityService;
 import com.tjCourse.softwareEngineering.backend.service.implementation.ActivityServiceImpl;
 import com.tjCourse.softwareEngineering.common.controller.CURDController;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class ActivityController extends CURDController<Activity,Integer, Activit
     }
 
     @GetMapping(value = "/user/{id}")
+    @RequiresAuthentication
     public ResponseEntity<List<ReturnBasicActivityInfoDTO>> getUserActivities(@PathVariable("id")Integer id){
         return new ResponseEntity<>(activityService.getMyActivitiesBasicInfo(id),HttpStatus.OK);
     }

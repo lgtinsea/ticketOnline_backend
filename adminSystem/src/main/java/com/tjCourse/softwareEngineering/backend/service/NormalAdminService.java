@@ -7,11 +7,19 @@ import com.tjCourse.softwareEngineering.common.service.CURDService;
 import java.util.List;
 
 public interface NormalAdminService extends CURDService<NormalAdmin,Integer> {
-    public Boolean applyForAdmin(String email_address,String reason);
+    Boolean applyForAdmin(String email_address, String reason);
 
-    public List<NormalAdmin> getUncheckedAdmin();
+    List<NormalAdmin> getUncheckedAdmin();
 
-    public Boolean checkAdmin(Integer seniorAdminID, Integer normalAdminID ,Integer status);
+    Boolean checkAdmin(Integer seniorAdminID, Integer normalAdminID, Integer status);
 
-    public ReturnAdminInfoDTO getAdminOwnInfo(Integer ID);
+    ReturnAdminInfoDTO getAdminOwnInfo(Integer ID);
+
+    NormalAdmin getNormalAdminByID(Integer ID);
+
+    NormalAdmin getNormalAdminByEmail(String email);
+
+    NormalAdmin getNormalAdminByEmailAndPassword(String email,String password);
+
+    String getVerifyCode(String id);
 }
