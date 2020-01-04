@@ -13,17 +13,19 @@
     </resultMap>
 
 
-    <select id="getActivitiesBasicInfo_5" parameterType="String" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
+    <select id="getActivitiesBasicInfo_limit" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
         select ID,poster,name,time_start,time_end,address
         from activity
         where type = #{variety}
-        limit 5
+        order by releaseTime desc
+        limit #{limit}
     </select>
 
     <select id="getActivitiesBasicInfo" parameterType="String" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
         select ID,poster,name,time_start,time_end,address
         from activity
         where type = #{variety}
+        order by releaseTime desc
     </select>
 
     <select id="getMyActivitiesBasicInfo" parameterType="Integer" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
@@ -31,4 +33,18 @@
         from activity join appointment a on activity.ID = a.activityID
         where userID = #{userID}
     </select>
+
+    <select id="getLatestActivitiesBasicInfo" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
+        select ID,poster,name,time_start,time_end,address
+        from activity
+        order by releaseTime desc
+    </select>
+
+    <select id="getLatestActivitiesBasicInfo_limit" parameterType="Integer" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnBasicActivityInfoDTO">
+        select ID,poster,name,time_start,time_end,address
+        from activity
+        order by releaseTime desc
+        limit #{limit}
+    </select>
+
 </mapper>

@@ -22,10 +22,10 @@ public class ActivityController extends CURDController<Activity,Integer, Activit
     @GetMapping("/basic")
     public ResponseEntity<List<ReturnBasicActivityInfoDTO>> getBasicActivityInfo(@RequestParam("limit")Integer limit, @RequestParam("variety")String variety){
         try {
-            if(limit==-1){
+            if(limit<=0){
                 return new ResponseEntity<>(activityService.getActivitiesBasicInfo(variety), HttpStatus.OK);
             }else {
-                return new ResponseEntity<>(activityService.getActivitiesBasicInfo_5(variety),HttpStatus.OK);
+                return new ResponseEntity<>(activityService.getActivitiesBasicInfo_limit(limit,variety),HttpStatus.OK);
             }
         }catch (Exception e){
             e.printStackTrace();

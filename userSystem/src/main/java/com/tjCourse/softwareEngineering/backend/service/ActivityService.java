@@ -9,7 +9,7 @@ import java.util.List;
 public interface ActivityService extends CURDService<Activity,Integer> {
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo(String variety);
 
-    public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_5(String variety);
+    public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_limit(Integer limit, String variety);
 
     public List<ReturnBasicActivityInfoDTO> getMyActivitiesBasicInfo(Integer userID);
 }

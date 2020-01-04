@@ -19,17 +19,24 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
 
     @Override
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo(String variety) {
+        if (variety.equals("最新")){
+            return activityMapper.getLatestActivitiesBasicInfo();
+        }
         return activityMapper.getActivitiesBasicInfo(variety);
     }
 
     @Override
-    public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_5(String variety){
-        return activityMapper.getActivitiesBasicInfo_5(variety);
+    public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_limit(Integer limit, String variety){
+        if (variety.equals("最新")){
+            return activityMapper.getLatestActivitiesBasicInfo_limit(limit);
+        }
+        return activityMapper.getActivitiesBasicInfo_limit(limit, variety);
     }
 
     @Override
     public List<ReturnBasicActivityInfoDTO> getMyActivitiesBasicInfo(Integer userID){
         return activityMapper.getMyActivitiesBasicInfo(userID);
     }
+
 
 }
