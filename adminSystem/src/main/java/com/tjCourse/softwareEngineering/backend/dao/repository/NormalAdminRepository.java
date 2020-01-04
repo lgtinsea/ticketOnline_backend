@@ -1,6 +1,5 @@
 package com.tjCourse.softwareEngineering.backend.dao.repository;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import com.tjCourse.softwareEngineering.backend.dto.ReturnAdminInfoDTO;
 import com.tjCourse.softwareEngineering.backend.entity.NormalAdmin;
 import org.apache.ibatis.annotations.Param;

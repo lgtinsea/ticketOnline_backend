@@ -1,6 +1,5 @@
 package com.tjCourse.softwareEngineering.backend.service;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.tjCourse.softwareEngineering.backend.entity.Comment;
 import com.tjCourse.softwareEngineering.common.service.CURDService;
 
