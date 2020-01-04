@@ -21,6 +21,11 @@ public class UserController extends CURDController<User,Integer, UserService> {
 
     @GetMapping("/basic/{id}")
     public ResponseEntity<ReturnBasicInfoDTO> getBasicInfo(@PathVariable("id")Integer userID){
-        return new ResponseEntity<>(userServiceImpl.getBasicInfoById(userID), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(userServiceImpl.getBasicInfoById(userID), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

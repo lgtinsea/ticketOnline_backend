@@ -18,18 +18,33 @@ public class AppointmentController {
     @RequiresAuthentication
     @RequiresRoles("user")
     public ResponseEntity<Boolean> addAppointment(@RequestParam("userID")Integer userID,@RequestParam("activityID")Integer activityID){
-        return new ResponseEntity<>(appointmentService.addAppointment(userID,activityID), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(appointmentService.addAppointment(userID,activityID), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @PutMapping(value = "")
     @RequiresAuthentication
     @RequiresRoles("user")
     public ResponseEntity<Boolean> deleteAppointment(@RequestParam("userID")Integer userID,@RequestParam("activityID")Integer activityID){
-        return new ResponseEntity<>(appointmentService.deleteAppointment(userID,activityID),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(appointmentService.deleteAppointment(userID,activityID),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping(value = "/num/{activityID}")
     public ResponseEntity<Integer> getAppointmentNumber(@PathVariable Integer activityID){
-        return new ResponseEntity<>(appointmentService.countByActivityId(activityID),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(appointmentService.countByActivityId(activityID),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

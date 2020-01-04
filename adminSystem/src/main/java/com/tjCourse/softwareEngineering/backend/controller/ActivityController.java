@@ -19,37 +19,63 @@ public class ActivityController {
     ActivityServiceImpl activityService;
 
     @GetMapping(value = "/basic")
-    public ResponseEntity<List<ReturnActivitiesDTO>> getActivitiesBasicInfo(@RequestParam("ID")Integer ID,@RequestParam("role")Integer role){
-        List<ReturnActivitiesDTO> list_activity = activityService.getActivityInfo(ID,role);
-        if(list_activity == null){
+    public ResponseEntity<Object> getActivitiesBasicInfo(@RequestParam("ID")Integer ID, @RequestParam("role")Integer role){
+        try {
+            List<ReturnActivitiesDTO> list_activity = activityService.getActivityInfo(ID,role);
+            if(list_activity == null){
+                return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            }else {
+                return new ResponseEntity<Object>(list_activity, HttpStatus.OK) ;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
             return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
-        }else {
-            return new ResponseEntity(list_activity, HttpStatus.OK) ;
         }
+
     }
 
     @GetMapping(value = "")
     public ResponseEntity<List<ReturnActivitiesCoverDTO>> getActivitiesCoverInfo(@RequestParam("ID")Integer ID,@RequestParam("role")Integer role){
-       List<ReturnActivitiesCoverDTO> list = activityService.getActivityCover(ID,role);
-       if (list == null){
-           return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
-       }else {
-           return new ResponseEntity<>(list,HttpStatus.OK);
-       }
+        try {
+            List<ReturnActivitiesCoverDTO> list = activityService.getActivityCover(ID,role);
+            if (list == null){
+                return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            }else {
+                return new ResponseEntity<>(list,HttpStatus.OK);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping(value = "/report")
     public ResponseEntity<List<ReturnActivityReportDTO>> getActivitiesReport(){
-        return new ResponseEntity<>(activityService.getActivityReport(), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(activityService.getActivityReport(), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @PutMapping(value = "")
     public ResponseEntity<Boolean> updateActivityInfo(@RequestBody Activity activity){
-        return new ResponseEntity<>(activityService.updateActivity(activity),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(activityService.updateActivity(activity),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @PostMapping(value = "")
     public ResponseEntity<Boolean> checkActivity(@RequestParam("draftID")Integer draftID,@RequestParam Integer adminID,@RequestParam String opinion, @RequestParam Integer result){
-        return new ResponseEntity<>(activityService.checkActivity(draftID, adminID, opinion, result),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(activityService.checkActivity(draftID, adminID, opinion, result),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

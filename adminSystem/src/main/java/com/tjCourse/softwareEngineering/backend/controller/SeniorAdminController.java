@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SeniorAdminController extends CURDController<SeniorAdmin,Integer, SeniorAdminService> {
     @GetMapping(value = "/basic/{id}")
     public ResponseEntity<ReturnAdminInfoDTO> getSeniorAdminBasicInfo(@PathVariable("id")Integer id){
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

@@ -21,17 +21,31 @@ public class ActivityController extends CURDController<Activity,Integer, Activit
 
     @GetMapping("/basic")
     public ResponseEntity<List<ReturnBasicActivityInfoDTO>> getBasicActivityInfo(@RequestParam("limit")Integer limit, @RequestParam("variety")String variety){
-        if(limit==-1){
-            return new ResponseEntity<>(activityService.getActivitiesBasicInfo(variety), HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(activityService.getActivitiesBasicInfo_5(variety),HttpStatus.OK);
+        try {
+            if(limit==-1){
+                return new ResponseEntity<>(activityService.getActivitiesBasicInfo(variety), HttpStatus.OK);
+            }else {
+                return new ResponseEntity<>(activityService.getActivitiesBasicInfo_5(variety),HttpStatus.OK);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
+
+
     }
 
     @GetMapping(value = "/user/{id}")
     @RequiresAuthentication
     public ResponseEntity<List<ReturnBasicActivityInfoDTO>> getUserActivities(@PathVariable("id")Integer id){
-        return new ResponseEntity<>(activityService.getMyActivitiesBasicInfo(id),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(activityService.getMyActivitiesBasicInfo(id),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
+
+
     }
 
 

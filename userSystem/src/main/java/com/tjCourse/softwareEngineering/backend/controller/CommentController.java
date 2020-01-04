@@ -23,6 +23,11 @@ public class CommentController extends CURDController<Comment,Integer, CommentSe
 
     @GetMapping(value = "/activities/{activityID}")
     public ResponseEntity<List<ReturnCommentDTO>> getComments(@PathVariable("activityID")Integer activityID){
-        return new ResponseEntity<>(commentService.getActivityComment(activityID), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(commentService.getActivityComment(activityID), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

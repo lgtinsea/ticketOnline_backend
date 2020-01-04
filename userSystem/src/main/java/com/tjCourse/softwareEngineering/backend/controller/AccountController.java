@@ -1,5 +1,6 @@
 package com.tjCourse.softwareEngineering.backend.controller;
 
+import com.tjCourse.softwareEngineering.backend.dto.LoginDTO;
 import com.tjCourse.softwareEngineering.backend.dto.ReturnLogInDTO;
 import com.tjCourse.softwareEngineering.backend.entity.User;
 import com.tjCourse.softwareEngineering.backend.service.UserService;
@@ -20,7 +21,12 @@ public class AccountController {
 
     @GetMapping(value = "/verification")
     public ResponseEntity<String> getVerificationCode(@RequestParam("emailAddress")String emailAddress){
-        return new ResponseEntity<>(userService.getVerifyCode(emailAddress), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(userService.getVerifyCode(emailAddress), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @PostMapping(value = "/user")
@@ -35,12 +41,19 @@ public class AccountController {
     }
 
     @PostMapping(value = "/login")
-    public ResponseEntity<String> logIn(@RequestParam("emailAddress")String emailAddress,@RequestParam("password")String password){
-        if (userService.getUserByEmailAndPassword(emailAddress,password)==null){
-            throw new UnauthenticatedException("username or password incorrect!");
-        }else {
-            String token = JWTUtil.sign(emailAddress,password,"user");
-            return new ResponseEntity<>(token,HttpStatus.OK);
+    public ResponseEntity<LoginDTO> logIn(@RequestParam("emailAddress")String emailAddress,@RequestParam("password")String password){
+        try {
+            User user = userService.getUserByEmailAndPassword(emailAddress,password);
+            if (user==null){
+                throw new UnauthenticatedException("username or password incorrect!");
+            }else {
+                LoginDTO loginDTO = new LoginDTO(user);
+                loginDTO.setAuthorization(JWTUtil.sign(emailAddress,password,"user"));
+                return new ResponseEntity<>(loginDTO,HttpStatus.OK);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
     }
 }

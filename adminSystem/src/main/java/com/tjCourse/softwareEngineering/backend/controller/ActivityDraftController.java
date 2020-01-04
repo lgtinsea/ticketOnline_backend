@@ -23,16 +23,28 @@ public class ActivityDraftController extends CURDController<ActivityDraft,Intege
 
     @GetMapping(value = "/checking/basic")
     public ResponseEntity<List<ReturnDraftDTO>> getCheckingDraftBasicInfo(@RequestParam("ID")Integer ID,@RequestParam("role")Integer role){
-        List<ReturnDraftDTO> list = activityDraftService.getUncheckedDraft(ID,role);
-        if (list == null){
-            return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
-        }else {
-            return new ResponseEntity<>(list,HttpStatus.OK);
+        try {
+            List<ReturnDraftDTO> list = activityDraftService.getUncheckedDraft(ID,role);
+            if (list == null){
+                return new ResponseEntity<>(null,HttpStatus.EXPECTATION_FAILED);
+            }else {
+                return new ResponseEntity<>(list,HttpStatus.OK);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
+
+
     }
 
     @GetMapping(value = "/editing/basic")
     public ResponseEntity<List<ReturnDraftDTO>> getEditingDraftBasicInfo(@RequestParam("ID")Integer adminID){
-        return new ResponseEntity<>(activityDraftService.getEditDraft(),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(activityDraftService.getEditDraft(),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

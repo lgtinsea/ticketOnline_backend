@@ -19,7 +19,11 @@ public class AdminController extends CURDController<NormalAdmin,Integer, NormalA
 
     @GetMapping(value = "/basic/{id}")
     public ResponseEntity<ReturnAdminInfoDTO> getBasicInfo(@PathVariable("id")int ID){
-        return new ResponseEntity<>(normalAdminService.getAdminOwnInfo(ID), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(normalAdminService.getAdminOwnInfo(ID), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
-
 }

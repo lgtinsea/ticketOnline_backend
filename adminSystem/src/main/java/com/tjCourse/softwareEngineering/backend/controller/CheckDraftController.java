@@ -21,6 +21,11 @@ public class CheckDraftController {
 
     @GetMapping(value = "/{draftID}")
     public ResponseEntity<List<CheckDraft>> getCheckDraft(@PathVariable Integer draftID){
-        return new ResponseEntity<>(checkDraftService.getByActivityDraftId(draftID), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(checkDraftService.getByActivityDraftId(draftID), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }

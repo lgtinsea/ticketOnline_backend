@@ -18,6 +18,17 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public Boolean addAppointment(Integer user_ID, Integer activity_ID){
         try {
+            Appointment appointment_ = appointmentRepository.getAllByActivityIdAndUserId(activity_ID,user_ID);
+            if (appointment_ != null){
+                if (appointment_.getStatus() == 1){
+                    return false;
+                }else if(appointment_.getStatus() == 0){
+                    appointment_.setStatus(1);
+                    appointmentRepository.saveAndFlush(appointment_);
+                    return true;
+                }
+            }
+
             Appointment appointment = new Appointment();
             appointment.setActivityId(activity_ID);
             appointment.setUserId(user_ID);

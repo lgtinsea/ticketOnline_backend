@@ -19,11 +19,21 @@ public class CommentController {
 
     @GetMapping(value = "/{activityID}")
     public ResponseEntity<List<Comment>> getComments(@PathVariable("activityID")Integer activityID){
-        return new ResponseEntity<>(commentService.getActivityComment(activityID), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(commentService.getActivityComment(activityID), HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 
     @PutMapping(value = "")
     public ResponseEntity<Boolean> updateComment(@RequestParam("ID")Integer ID,@RequestParam("ifAppeared")boolean ifAppeared){
-        return new ResponseEntity<>(commentService.updateComment(ID,ifAppeared),HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(commentService.updateComment(ID,ifAppeared),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
+        }
     }
 }
