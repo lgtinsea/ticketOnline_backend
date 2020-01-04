@@ -32,6 +32,7 @@ public class Activity {
   private String type;
   private java.sql.Timestamp releaseTime;
   private int organizationId;
+  private int day_click_num;
 
   public Activity(ActivityDraft activityDraft){
     this.time_start = activityDraft.getTime_start();

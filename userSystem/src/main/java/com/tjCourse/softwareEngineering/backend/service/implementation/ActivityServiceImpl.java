@@ -17,10 +17,14 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
     @Autowired
     ActivityMapper activityMapper;
 
+//    @Autowired ActivityRepository activityRepository;
+
     @Override
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo(String variety) {
         if (variety.equals("最新")){
             return activityMapper.getLatestActivitiesBasicInfo();
+        }else if (variety.equals("最热")){
+            return activityMapper.getHottestActivitiesBasicInfo();
         }
         return activityMapper.getActivitiesBasicInfo(variety);
     }
@@ -29,6 +33,8 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
     public List<ReturnBasicActivityInfoDTO> getActivitiesBasicInfo_limit(Integer limit, String variety){
         if (variety.equals("最新")){
             return activityMapper.getLatestActivitiesBasicInfo_limit(limit);
+        }else if (variety.equals("最热")){
+            return activityMapper.getHottestActivitiesBasicInfo_limit(limit);
         }
         return activityMapper.getActivitiesBasicInfo_limit(limit, variety);
     }
@@ -38,5 +44,13 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
         return activityMapper.getMyActivitiesBasicInfo(userID);
     }
 
+    @Override
+    public Activity queryById(Integer id){
+        Activity activity = activityMapper.getOne(id);
+        int num = activity.getDay_click_num();
+        activity.setDay_click_num(num + 1);
+        activityMapper.updateClickNum(num+1,activity.getId());
+        return activity;
+    }
 
 }

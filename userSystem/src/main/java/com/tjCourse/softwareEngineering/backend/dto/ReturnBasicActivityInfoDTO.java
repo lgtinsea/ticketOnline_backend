@@ -15,4 +15,5 @@ public class ReturnBasicActivityInfoDTO {
     private Timestamp time_start;
     private Timestamp time_end;
     private String address;
+    private Integer click_num;
 }
