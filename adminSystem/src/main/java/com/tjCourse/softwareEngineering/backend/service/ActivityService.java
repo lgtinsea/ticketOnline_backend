@@ -18,4 +18,9 @@ public interface ActivityService extends CURDService<Activity,Integer> {
     public Boolean updateActivity(Activity activity);
 
     public Boolean checkActivity(Integer draftID,Integer adminID,String opinion,Integer result);
+
+
+
+    //生成数据用
+    public Boolean generateData();
 }

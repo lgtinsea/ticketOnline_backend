@@ -78,4 +78,12 @@ public class ActivityController {
             return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
     }
+
+
+
+    //test
+    @GetMapping(value = "/data")
+    public void generateData(){
+        activityService.generateData();
+    }
 }

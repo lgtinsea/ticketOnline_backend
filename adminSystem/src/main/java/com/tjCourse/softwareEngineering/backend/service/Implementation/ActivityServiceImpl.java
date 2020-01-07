@@ -125,4 +125,42 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
         }
     }
 
+
+
+
+    //生成数据用
+    @Override
+    public Boolean generateData() {
+        List<Activity> list = activityRepository.findAll();
+        for (Activity activity: list){
+            ActivityDraft activityDraft = new ActivityDraft();
+            activityDraft.setNormalAdminId(10001);
+            activityDraft.setTime_start(activity.getTime_start());
+            activityDraft.setName(activity.getName());
+            activityDraft.setIntroduction(activity.getIntroduction());
+            activityDraft.setAddress(activity.getAddress());
+            activityDraft.setSponsor(activity.getSponsor());
+            activityDraft.setPoster(activity.getPoster());
+            activityDraft.setContent(activity.getContent());
+            activityDraft.setPeopleAmount(activity.getPeopleAmount());
+            activityDraft.setStatus(3);
+            activityDraft.setActivityId(0);
+            activityDraft.setType(activity.getType());
+            activityDraft.setOrganizationId(activity.getOrganizationId());
+            activityDraft.setTime_end(activity.getTime_end());
+
+            ActivityDraft new_draft = activityDraftRepository.save(activityDraft);
+
+            CheckDraft checkDraft = new CheckDraft();
+            checkDraft.setSeniorAdminId(100);
+            checkDraft.setResult(1);
+            checkDraft.setOpinion("通过");
+            checkDraft.setCheckTime(new_draft.getTime_start());
+            checkDraft.setActivityDraftId(new_draft.getId());
+            checkDraft.setCheckNumber(0);
+            checkDraftRepository.save(checkDraft);
+        }
+        return null;
+    }
+
 }
