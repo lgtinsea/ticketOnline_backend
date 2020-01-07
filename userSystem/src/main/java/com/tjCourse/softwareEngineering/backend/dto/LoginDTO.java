@@ -5,6 +5,8 @@ import lombok.Data;
 
 @Data
 public class LoginDTO {
+    private Integer id;
+
     private String name;
 
     private String email;
@@ -16,6 +18,7 @@ public class LoginDTO {
     private String Authorization;
 
     public LoginDTO(User user){
+        this.id = user.getId();
         this.name = user.getName();
         this.email = user.getEmailAddress();
         this.portrait = user.getPortrait();

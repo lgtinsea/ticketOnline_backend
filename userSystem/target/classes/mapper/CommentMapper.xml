@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjCourse.softwareEngineering.backend.dao.mapper.CommentMapper">
+    <resultMap id="baseResultMap" type="com.tjCourse.softwareEngineering.backend.dto.ReturnCommentDTO">
+        <id column="ID" jdbcType="INTEGER" property="ID"/>
+        <result column="replyID" jdbcType="INTEGER" property="replyID"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="portrait" jdbcType="VARCHAR" property="portrait"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+    </resultMap>
+
+    <select id="getActivityComment" parameterType="Integer" resultType="com.tjCourse.softwareEngineering.backend.dto.ReturnCommentDTO">
+        select comment.ID,comment.replyID,user.name,portrait,comment.content,time
+        from comment join user
+        on comment.userID = user.ID
+        where activityID = #{activity_ID}
+    </select>
+</mapper>
