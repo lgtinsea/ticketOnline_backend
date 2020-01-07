@@ -71,7 +71,7 @@ public class ShiroConfig {
         // 允许用户匿名访问/login(登录接口)
         filterChainDefinitionMap.put("api/account/admin/login/normal", "anon");
         filterChainDefinitionMap.put("api/account/admin/login/senior", "anon");
-        filterChainDefinitionMap.put("api/account/user/login", "anon");
+        filterChainDefinitionMap.put("api/account/login", "anon");
         // swagger允许匿名访问
         filterChainDefinitionMap.put("/swagger-ui.html","anon");
         filterChainDefinitionMap.put("/swagger-resources/**","anon");
