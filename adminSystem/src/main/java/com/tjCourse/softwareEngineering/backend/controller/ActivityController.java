@@ -85,5 +85,6 @@ public class ActivityController {
     @GetMapping(value = "/data")
     public void generateData(){
         activityService.generateData();
+        activityService.generateCheckDraft();
     }
 }

@@ -47,4 +47,14 @@ public class AppointmentController {
             return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
     }
+
+    @GetMapping(value = "/check")
+    public ResponseEntity<Boolean> checkIfAppointment(@RequestParam Integer user_ID, @RequestParam Integer activity_ID){
+        try {
+            return new ResponseEntity<>(appointmentService.findIfAppointment(user_ID,activity_ID),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(null,HttpStatus.CONFLICT);
+        }
+    }
 }

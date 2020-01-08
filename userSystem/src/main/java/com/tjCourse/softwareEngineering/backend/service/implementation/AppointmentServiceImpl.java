@@ -62,4 +62,15 @@ public class AppointmentServiceImpl implements AppointmentService {
             return false;
         }
     }
+
+    @Override
+    public Boolean findIfAppointment(Integer user_ID, Integer activity_ID) {
+        Appointment appointment = appointmentRepository.getAllByActivityIdAndUserId(activity_ID,user_ID);
+
+        if (appointment == null){
+            return false;
+        }else {
+            return appointment.getStatus() == 1;
+        }
+    }
 }

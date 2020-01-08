@@ -132,6 +132,7 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
     @Override
     public Boolean generateData() {
         List<Activity> list = activityRepository.findAll();
+        int i = 0;
         for (Activity activity: list){
             ActivityDraft activityDraft = new ActivityDraft();
             activityDraft.setNormalAdminId(10001);
@@ -149,18 +150,29 @@ public class ActivityServiceImpl extends CURDServiceImpl<Activity,Integer, Activ
             activityDraft.setOrganizationId(activity.getOrganizationId());
             activityDraft.setTime_end(activity.getTime_end());
 
+            activityDraft.setId(10002+i);
+            i +=1;
+
             ActivityDraft new_draft = activityDraftRepository.save(activityDraft);
 
+        }
+        return null;
+    }
+
+    @Override
+    public boolean generateCheckDraft(){
+        List<ActivityDraft> list = activityDraftRepository.findAll();
+        for(ActivityDraft activityDraft:list){
             CheckDraft checkDraft = new CheckDraft();
             checkDraft.setSeniorAdminId(100);
             checkDraft.setResult(1);
             checkDraft.setOpinion("通过");
-            checkDraft.setCheckTime(new_draft.getTime_start());
-            checkDraft.setActivityDraftId(new_draft.getId());
+            checkDraft.setCheckTime(activityDraft.getTime_start());
+            checkDraft.setActivityDraftId(activityDraft.getId());
             checkDraft.setCheckNumber(0);
             checkDraftRepository.save(checkDraft);
         }
-        return null;
+        return true;
     }
 
 }

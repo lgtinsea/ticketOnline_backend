@@ -7,4 +7,6 @@ public interface AppointmentService {
     public Boolean addAppointment(Integer user_ID,Integer activity_ID);
 
     public Boolean deleteAppointment(Integer user_ID, Integer activity_ID);
+
+    public Boolean findIfAppointment(Integer user_ID, Integer activity_ID);
 }

@@ -23,4 +23,6 @@ public interface ActivityService extends CURDService<Activity,Integer> {
 
     //生成数据用
     public Boolean generateData();
+
+    public boolean generateCheckDraft();
 }
