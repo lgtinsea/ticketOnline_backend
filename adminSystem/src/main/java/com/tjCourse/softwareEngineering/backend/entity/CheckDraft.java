@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "checkDraft")
+@Table(name = "checkdraft")
 @IdClass(CheckDraftPK.class)
 public class CheckDraft {
   @Id
